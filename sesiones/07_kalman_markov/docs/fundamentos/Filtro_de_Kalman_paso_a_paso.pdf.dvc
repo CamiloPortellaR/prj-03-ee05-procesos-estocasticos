@@ -1,0 +1,5 @@
+outs:
+- md5: bac6963dc7f513c923c479c37d88a2df
+  size: 142195
+  hash: md5
+  path: Filtro_de_Kalman_paso_a_paso.pdf
