@@ -1,0 +1,180 @@
+================================================================================
+RESUMEN DE FUENTES — BIBLIOGRAFÍA DEL EXAMEN FINAL (SESIÓN 08)
+Carpeta analizada: docs/bibliografia_examen/
+Eje temático de referencia: Modelado Estocástico de Degradación
+Fecha de análisis: 2026-07-16
+================================================================================
+
+Nota: la carpeta contiene 7 archivos PDF. El archivo "degradacion modeling
+markov 2 papers.pdf" corresponde, según su contenido extraído, a un único
+artículo (Dutta et al., Processes 2023), pese a lo que sugiere su nombre.
+
+--------------------------------------------------------------------------------
+[1] Curva de Degradación Estocástica.pdf
+--------------------------------------------------------------------------------
+Referencia: Wu, F.; Tang, J.; Jiang, Z.; Sun, Y.; Chen, Z.; Guo, B. "The
+Remaining Useful Life Prediction Method of a Hydraulic Pump under Unknown
+Degradation Model with Limited Data". Sensors, 23(13), 5931, 2023.
+
+Tema principal: predicción de vida útil remanente (RUL) de bombas hidráulicas
+de pistones con modelo de degradación desconocido y datos limitados. Usa la
+eficiencia volumétrica como indicador de degradación (umbral de falla: 88%
+según JB/T7043-2006), ajusta trayectorias candidatas (exponencial, Fourier,
+lineal, cuadrática) evaluadas con SSE/RMSE/R², selecciona la distribución de
+efectos aleatorios (Weibull, valor extremo, lognormal) mediante prueba K-S y
+actualiza el modelo por etapas de degradación. Exactitud reportada > 85% con
+banco de pruebas propio.
+
+Aporte al Modelado Estocástico de Degradación: es la fuente NUCLEAR del eje
+temático. Formaliza el modelo de observación z(t) = y(t) + ε(t) (tendencia +
+fluctuación aleatoria), la selección dinámica de la curva de degradación, la
+cuantificación de incertidumbre del pronóstico y la actualización de
+parámetros en línea. Ideal para el capítulo metodológico y para definir el
+indicador y el umbral de falla del examen.
+
+--------------------------------------------------------------------------------
+[2] degradacion modeling markov 2 papers.pdf
+--------------------------------------------------------------------------------
+Referencia: Dutta, N.; Palanisamy, K.; Shanmugam, P.; Subramaniam, U.;
+Selvam, S. "Life Cycle Cost Analysis of Pumping System through Machine
+Learning and Hidden Markov Model". Processes, 11(7), 2157, 2023.
+
+Tema principal: análisis de costo de ciclo de vida (LCC) de sistemas de
+bombeo en condiciones sanas y con falla, a distintos caudales. Compara
+algoritmos de ML y propone un modelo híbrido SVM-HMM (máquina de soporte
+vectorial + modelo oculto de Markov) evaluado por velocidad de predicción,
+tiempo de entrenamiento y exactitud; el híbrido detecta fallas en etapas
+tempranas y reduce costos energéticos.
+
+Aporte al Modelado Estocástico de Degradación: introduce el modelo oculto de
+Markov (HMM) como representación estocástica del estado latente de la bomba,
+inferido desde observaciones ruidosas. Conecta la detección temprana de
+degradación con el impacto económico (LCC), útil para justificar el valor
+industrial del diagnóstico markoviano en el examen.
+
+--------------------------------------------------------------------------------
+[3] degradacion modeling pump -1 paper.pdf
+--------------------------------------------------------------------------------
+Referencia: Pedersen, T. I.; Vatn, J.; Jørgensen, K. A. "Degradation
+Modelling of Centrifugal Pumps as Input to Predictive Maintenance".
+Proceedings ESREL2020-PSAM15, Research Publishing, Singapore, 2020.
+
+Tema principal: mantenimiento predictivo de 15 bombas centrífugas de una
+plataforma offshore noruega con 4 años de datos de sensores y órdenes de
+mantenimiento. Modela el daño de impulsor con un árbol causal de diagnóstico
+(síntoma: desviación de altura/head deviation) y pronostica el RUL con un
+enfoque estocástico: proceso de Wiener y distribución Inversa Gaussiana (IG)
+para el tiempo de primer cruce del umbral de falla, validado con simulación
+Monte Carlo.
+
+Aporte al Modelado Estocástico de Degradación: aporte directo y central.
+Ejemplifica la degradación como proceso de Wiener cuyo primer tiempo de paso
+sigue una IG — exactamente el tipo de formalismo del curso de procesos
+estocásticos. Además muestra las limitaciones prácticas (pocas fallas
+observadas, incrementos no del todo independientes), valiosas para la
+discusión crítica del examen.
+
+--------------------------------------------------------------------------------
+[4] kumar2017.pdf
+--------------------------------------------------------------------------------
+Referencia: Kumar, G.; Jain, V.; Gandhi, O. P. "Availability analysis of
+mechanical systems with condition-based maintenance using semi-Markov and
+evaluation of optimal condition monitoring interval". Journal of Industrial
+Engineering International, 2017. DOI: 10.1007/s40092-017-0212-z.
+
+Tema principal: disponibilidad en estado estacionario de sistemas mecánicos
+bajo mantenimiento basado en condición (CBM), modelados como proceso
+semi-Markov (SMP) con múltiples estados de degradación, fallas aleatorias y
+reparaciones mínimas/imperfectas/mayores. Distribuciones Weibull (degradación),
+lognormal (reparación) y exponencial (falla aleatoria). Resuelve con cadena de
+Markov embebida (método de dos etapas) y optimiza el intervalo de monitoreo
+con algoritmo genético. Caso demostrativo: bomba centrífuga (disponibilidad
+mejora de 0.9971 a 0.99945).
+
+Aporte al Modelado Estocástico de Degradación: extiende la cadena de Markov
+clásica al proceso semi-Markov, permitiendo tiempos de permanencia no
+exponenciales — clave para modelar degradación gradual multi-estado de forma
+realista. Aporta la matriz kernel K(t), la cadena embebida y el vínculo formal
+entre estados de degradación discretos y decisiones de inspección/monitoreo.
+
+--------------------------------------------------------------------------------
+[5] paper_diagnostico_bombas_ieom2023.pdf
+--------------------------------------------------------------------------------
+Referencia: Menanno, M.; Salsano, A. "Centrifugal Pump Fault Diagnosis using
+a Predictive Maintenance Model". Proceedings of the 6th European Conference
+on Industrial Engineering and Operations Management (IEOM), Lisboa, 18-20 de
+julio de 2023, pp. 1600-1611.
+
+Tema principal: diagnóstico multinomial de fallas de una bomba centrífuga
+monobloque (CRI ACM-0 AF) integrando señales acústicas y vibracionales a
+70 kHz. Preprocesamiento por ventana deslizante (estadísticos: media, máximo,
+mínimo, desviación estándar por sensor), clasificación con SVM gaussiana media
+(k=1500) y exactitud de 99.7% para cinco estados: sin defecto, impulsor roto,
+impulsor obstruido, defecto de pista interna y de pista externa del rodamiento.
+
+Aporte al Modelado Estocástico de Degradación: define el espacio de estados
+discretos de falla (los cinco regímenes) que en el examen se interpretan como
+estados de una cadena de Markov, y provee el mecanismo de observación/
+inferencia del estado vigente a partir de series temporales ruidosas. Es la
+fuente [2] ya citada en el informe y complementa el pronóstico RUL con el
+diagnóstico instantáneo.
+
+--------------------------------------------------------------------------------
+[6] redutskiy2021.pdf
+--------------------------------------------------------------------------------
+Referencia: Redutskiy, Y.; Camitz-Leidland, C. M.; Vysochyna, A.; Anderson,
+K. T.; Balycheva, M. "Safety systems for the oil and gas industrial
+facilities: Design, maintenance policy choice, and crew scheduling".
+Reliability Engineering and System Safety, 210, 107545, 2021.
+
+Tema principal: diseño y política de mantenimiento de sistemas instrumentados
+de seguridad (SIS) en instalaciones remotas de oil & gas. Cadena de Markov en
+tiempo continuo (fallas/reparaciones de arquitecturas redundantes MooN,
+fallas de causa común), políticas de prueba (paralela, secuencial,
+escalonada), optimización multiobjetivo (PFD, downtime, costo de ciclo de
+vida) y programación de cuadrillas.
+
+Aporte al Modelado Estocástico de Degradación: aporte INDIRECTO. No modela
+degradación mecánica de bombas, pero ilustra el análisis de Markov de sistemas
+reparables (estados de operación, falla detectada/no detectada, reparación) y
+la conexión entre modelo estocástico y decisiones de mantenimiento/costo.
+Útil como antecedente del uso de Markov en confiabilidad industrial y para
+contextualizar el ecosistema SCADA/seguridad del proyecto.
+
+--------------------------------------------------------------------------------
+[7] zhou2020.pdf
+--------------------------------------------------------------------------------
+Referencia: Zhou, X.; van Gelder, P.H.A.J.M.; Liang, Y.; Zhang, H. "An
+integrated methodology for the supply reliability analysis of multi-product
+pipeline systems under pumps failure". Reliability Engineering and System
+Safety, 204, 107185, 2020.
+
+Tema principal: confiabilidad de suministro de poliductos multiproducto ante
+fallas de bombas. Cadena de Markov en tiempo discreto para la transición
+operativa/fallada de cada bomba (tasas desde MTBF/MTTR), simulación Monte
+Carlo de escenarios (100 000 corridas), modelo de scheduling/hidráulica (MILP)
+para capacidad máxima e indicadores de confiabilidad por estación y producto.
+Caso real: poliducto de 375.5 km en China.
+
+Aporte al Modelado Estocástico de Degradación: aporte PARCIAL. Aplica cadenas
+de Markov y Monte Carlo a fallas de bombas a escala de sistema, mostrando cómo
+la falla estocástica de componentes propaga efectos al desempeño global. Su
+limitación (solo dos estados: operativa/fallada, sin degradación progresiva)
+sirve de contraste argumentativo: justifica en el examen la necesidad de
+modelos multi-estado (Kumar 2017) y de trayectoria continua (Wu 2023,
+Pedersen 2020).
+
+================================================================================
+LECTURA TRANSVERSAL PARA EL INFORME (Caps. 1-2 de plantilla_examen_final.docx)
+================================================================================
+- Núcleo del eje temático: [1] Wu 2023 (curva de degradación estocástica + RUL)
+  y [3] Pedersen 2020 (Wiener / Inversa Gaussiana para RUL de impulsor).
+- Formalismo markoviano de estados de degradación: [4] Kumar 2017 (semi-Markov
+  multi-estado) y [2] Dutta 2023 (HMM para estado latente).
+- Diagnóstico del estado actual: [5] Menanno & Salsano 2023 (SVM + ventana
+  deslizante, 5 clases de falla).
+- Contexto de sistema y confiabilidad industrial: [6] Redutskiy 2021 (Markov
+  en SIS) y [7] Zhou 2020 (Markov + Monte Carlo a escala de poliducto).
+- Cadena argumental sugerida: diagnóstico del estado (5) -> modelo de estados
+  y transiciones (4, 2) -> trayectoria de degradación y RUL con incertidumbre
+  (1, 3) -> impacto sistémico y económico (7, 2, 6).

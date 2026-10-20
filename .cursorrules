@@ -10,7 +10,7 @@ Inicia tu primera respuesta de la sesión EXACTAMENTE con esta estructura:
 DETENTE y espera autorización. Si la respuesta es NO, aborta inmediatamente.
 
 ## 2. ARQUITECTURA MODULAR (OOP) Y NOMENCLATURA
-- Raíz del repositorio: `ee05-procesos-estocasticos` (kebab-case).
+- Raíz del repositorio: `prj-03-ee05-procesos-estocasticos` (kebab-case).
 - Carpetas y archivos internos: Obligatorio el uso de `snake_case` (ej. `sesion_01`).
 - Estructura por clases: Crea mini-proyectos independientes por sesión (ej. `sesiones/sesion_01/`). Aplica Programación Orientada a Objetos (OOP), modularidad (`core/`, `models/`) y código limpio.
 - Visualización inline: Todo script de Python debe usar celdas interactivas (`# %%`) para mostrar gráficos directamente en el editor.

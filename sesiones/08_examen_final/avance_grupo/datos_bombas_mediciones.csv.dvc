@@ -1,0 +1,5 @@
+outs:
+- md5: 3b3374e8ae932d4f9ce67745cf629086
+  size: 43167085
+  hash: md5
+  path: datos_bombas_mediciones.csv

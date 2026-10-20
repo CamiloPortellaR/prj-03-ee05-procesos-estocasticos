@@ -1,0 +1,5 @@
+outs:
+- md5: 528c522b95f489f33ace95e7a07301ad
+  size: 2380
+  hash: md5
+  path: resultados_markov.npz

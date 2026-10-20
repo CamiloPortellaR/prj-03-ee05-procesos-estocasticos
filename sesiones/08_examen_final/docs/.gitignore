@@ -1,0 +1,6 @@
+*
+!.gitignore
+!*.dvc
+!*.md
+!*.py
+!*.txt

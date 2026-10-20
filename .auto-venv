@@ -1,0 +1,2 @@
+# Si este archivo existe, bash activa automáticamente .venv al entrar en esta carpeta (o subcarpetas).
+# Configurado en ~/.bashrc — no borrar salvo que quieras desactivar el comportamiento.

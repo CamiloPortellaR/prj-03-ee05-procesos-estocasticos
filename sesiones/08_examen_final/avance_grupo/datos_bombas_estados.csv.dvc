@@ -1,0 +1,5 @@
+outs:
+- md5: 04501342c5c774e9626b6bc1dd42c1c7
+  size: 90330582
+  hash: md5
+  path: datos_bombas_estados.csv
