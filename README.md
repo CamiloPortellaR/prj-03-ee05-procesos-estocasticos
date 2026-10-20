@@ -74,9 +74,40 @@ la misma tarea.
    ```
 
 6. Activación automática del entorno (opcional): el archivo `.auto-venv`
-   solo funciona si `~/.bashrc` tiene la función `__auto_project_venv`, que
-   no está en este repositorio. Sin ella, activar a mano con
-   `source .venv/bin/activate`.
+   solo funciona si `~/.bashrc` tiene la función de «Activar `.venv` solo»
+   (abajo). Sin ella, activar a mano con `source .venv/bin/activate`.
+
+## Activar `.venv` solo
+
+Pegar al final de `~/.bashrc` y abrir una terminal nueva. Al entrar a
+cualquier carpeta con `.auto-venv` y `.venv/` se activa su entorno; al salir
+se desactiva. Sirve para todos los proyectos que tengan el marcador.
+
+```bash
+# ── Auto-activar .venv en proyectos con marcador .auto-venv ─────────────────
+__auto_project_venv() {
+    local dir="$PWD"
+    while [[ "$dir" != "/" ]]; do
+        if [[ -f "$dir/.auto-venv" && -f "$dir/.venv/bin/activate" ]]; then
+            if [[ "${VIRTUAL_ENV:-}" != "$dir/.venv" ]]; then
+                # shellcheck disable=SC1091
+                source "$dir/.venv/bin/activate"
+            fi
+            return 0
+        fi
+        dir="$(dirname "$dir")"
+    done
+    # Saliste del árbol del proyecto: desactiva si el venv activo tenía marcador .auto-venv
+    if [[ -n "${VIRTUAL_ENV:-}" && -f "$VIRTUAL_ENV/../.auto-venv" ]]; then
+        deactivate 2>/dev/null
+    fi
+}
+if [[ -z "${PROMPT_COMMAND:-}" ]]; then
+    PROMPT_COMMAND="__auto_project_venv"
+else
+    PROMPT_COMMAND="__auto_project_venv; $PROMPT_COMMAND"
+fi
+```
 
 ## Si DVC responde «invalid_grant»
 
