@@ -44,11 +44,11 @@ la misma tarea.
    cd prj-03-ee05-procesos-estocasticos
    ```
 
-2. Entorno de Python (3.12):
+2. Entorno de Python (3.12.3, la de `.python-version`; con el Python de `uv`, no el de Ubuntu):
 
    ```bash
-   python3 -m venv .venv
-   .venv/bin/pip install -r requirements.txt
+   uv venv --managed-python --seed .venv
+   uv pip install --python .venv/bin/python -r requirements.txt
    ```
 
 3. Claves: crear `.dvc/config.local` y pegar el contenido de la nota de
